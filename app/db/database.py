@@ -23,16 +23,7 @@ else:
     DATABASE_URL = f"sqlite:///{DB_NAME}"
 
 # SQLAlchemy engine va session yaratish
-engine = create_engine(
-    DATABASE_URL,
-    connect_args={"check_same_thread": False},
-    pool_size=10,
-    max_overflow=20,
-)
-# Use a Single Connection for SQLite
-# engine = create_engine(
-#     DATABASE_URL, connect_args={"check_same_thread": False}, poolclass=None
-# )
+engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 

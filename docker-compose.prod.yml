@@ -20,6 +20,28 @@ services:
     networks:
       - fastapi-network
 
+
+  prometheus:
+    image: prom/prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    restart: always
+    env_file: .env
+    networks:
+      - fastapi-network
+
+  grafana:
+    image: grafana/grafana
+    ports:
+      - "3000:3000"
+    env_file: .env
+    restart: always
+    networks:
+      - fastapi-network
+
+
   postgres_db:
     image: postgres:14
     container_name: postgres-container

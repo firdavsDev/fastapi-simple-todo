@@ -11,7 +11,7 @@ from prometheus_fastapi_instrumentator import Instrumentator
 
 from app.api.v1.routes import router
 from app.core.settings import settings
-from app.db.database import Base, engine
+from app.db.database import Base, create_database, engine
 from app.middleware.auth_middleware import AuthMiddleware
 from app.middleware.logging_middleware import LoggingMiddleware
 
@@ -47,7 +47,7 @@ app.add_middleware(LoggingMiddleware)
 app.include_router(router)
 
 # Baza mavjud bo‘lmasa, yaratamiz
-Base.metadata.create_all(bind=engine)
+create_database()
 
 
 security = HTTPBasic()
