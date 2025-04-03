@@ -1,0 +1,20 @@
+# Python related
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.sqlite3
+venv/
+.env
+
+# FastAPI related
+*.db
+*.log
+
+# IDE files
+.vscode/
+.idea/
+
+# System files
+.DS_Store
+Thumbs.db
